@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Camera</title>
+
+  <body>
+<h1><b>CAMERA APP</b></h1>
+<p><i>Pls click allow on the above popup window to allow the page to access your camera<br>Pls make sure that your web browser has enabled JavaScript</i></p>
+
+       <video id="my_video"/>
+<script>
+      function setup() {
+        navigator.myGetMedia = ( navigator.getUserMedia ||
+          navigator.webkitGetUserMedia ||
+          navigator.mozGetUserMedia ||
+          navigator.msGetUserMedia);
+
+        navigator.myGetMedia({video: true}, connect, error);
+      }
+
+      function connect(stream) {
+        var video = document.getElementById("my_video");
+        video.src = window.URL ? window.URL.createObjectURL(stream) : stream;
+        video.play();
+      }
+
+      function error(e) { console.log(e); }
+
+      addEventListener("load", setup);
+    </script>
+<button type = "button = setup()">Snap A Photo</button>
+  </head>
+</body>
+</html>
